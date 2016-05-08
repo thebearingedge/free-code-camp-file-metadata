@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint src/**/*.js",
-    "babel": "npm run -s lint && rimraf dist && babel src -d dist",
+    "dist": "rimraf dist && babel src -d dist && cp src/*.jade dist/",
     "start": "node .",
     "start:dev": "babel-node src",
     "dev": "npm-watch"
@@ -17,9 +17,13 @@
         "src"
       ]
     },
-    "babel": {
+    "dist": {
       "patterns": [
         "src"
+      ],
+      "extensions": [
+        ".js",
+        ".jade"
       ]
     }
   },

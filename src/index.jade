@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    title File Metadata
+  body
+    p User Stories
+    ul
+      li I can submit a FormData object that includes a file upload.
+      li When I submit something, I will receive the file size in bytes within the JSON response
+    form(action='upload', method='post')
+      input(type='file')
+      input(type='submit' value='Upload')
