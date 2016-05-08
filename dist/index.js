@@ -15,10 +15,9 @@ var _upload2 = _interopRequireDefault(_upload);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var port = process.env.PORT || 3000;
-var indexHtml = (0, _jade.renderFile)((0, _path.join)(__dirname, '/index.jade'));
 
-(0, _express2.default)().use('/upload', _upload2.default).get('/', function (req, res) {
-  return res.send(indexHtml);
+(0, _express2.default)().use('/upload', _upload2.default).get('/', function (_, res) {
+  return res.send((0, _jade.renderFile)((0, _path.join)(__dirname, '/index.jade')));
 }).listen(port, function (_) {
   return console.log('listening on ' + port);
 });

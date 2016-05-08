@@ -1,17 +1,12 @@
 
-import { Router } from 'express'
 import multer from 'multer'
 
 
-const router = new Router()
-const upload = multer()
+export default [multer().single('uploaded'), ({ file, method }, res) => {
 
+  if (method !== 'POST') return res.redirect('/')
 
-router.use(upload.single('uploaded'), ({ file, headers }, res) => {
+  const { originalName: name, size } = file
 
-  const { size } = file
-
-  res.json(size)
-})
-
-export default router
+  res.json({ name, size })
+}]

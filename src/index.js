@@ -6,10 +6,9 @@ import upload from './upload'
 
 
 const port = process.env.PORT || 3000
-const indexHtml = renderFile(join(__dirname, '/index.jade'))
 
 
 express()
   .use('/upload', upload)
-  .get('/', (req, res) => res.send(indexHtml))
+  .get('/', (_, res) => res.send(renderFile(join(__dirname, '/index.jade'))))
   .listen(port, _ => console.log(`listening on ${port}`))
